@@ -8,7 +8,7 @@ node('workers'){
         def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
         sh "docker run --rm -v $PWD/reports-new:/app/reports ${imageName}-test"
         sh "ls $PWD/reports-new"
-        junit 'reports-new/TEST-TestJSONLoaderMethods-20211128172121.xml'
+        junit "/reports-new/*.xml"
     }
 }
 
