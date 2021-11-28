@@ -7,7 +7,7 @@ node('workers'){
     stage('Unit Tests'){
         def imageTest= docker.build("${imageName}-test", "-f Dockerfile.test .")
         sh "docker run --rm -v ${env.WORKSPACE}/reports:/app/reports ${imageName}-test"
-        junit "reports-new/*.xml"
+        junit "reports/*.xml"
     }
 }
 
